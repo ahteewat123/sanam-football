@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>สนามผลบอล</title>
+    <meta
+      name="description"
+      content="สนามผลบอล เว็บดูโปรแกรมบอลวันนี้ ผลบอลล่าสุด และสถานะแมตช์จาก API อัปเดตตามเวลาไทย ค้นหาทีมและลีกได้รวดเร็ว"
+    />
+    <meta
+      name="keywords"
+      content="ผลบอล, โปรแกรมบอล, ผลบอลวันนี้, โปรแกรมบอลวันนี้, ตารางบอล, สนามผลบอล"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="สนามผลบอล - โปรแกรมบอลและผลบอลวันนี้" />
+    <meta
+      property="og:description"
+      content="ดูโปรแกรมบอลวันนี้ ผลบอลล่าสุด และสถานะแมตช์แบบรวดเร็วในมุมมองนีออนทันสมัย"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="th_TH" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "สนามผลบอล",
+        "description": "เว็บดูโปรแกรมบอลวันนี้และผลบอลล่าสุดตามเวลาไทย",
+        "inLanguage": "th-TH"
+      }
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="site-header">
+        <div>
+          <p class="brand-mark">สนามผลบอล</p>
+          <h1>โปรแกรมบอลและผลบอลวันนี้</h1>
+        </div>
+        <div class="header-status">
+          <span id="providerState" class="provider-pill">กำลังเชื่อมต่อ</span>
+          <p id="updatedText">กำลังโหลดข้อมูลล่าสุด...</p>
+        </div>
+      </header>
+
+      <section class="scoreboard" aria-labelledby="matchDayTitle">
+        <div class="scoreboard-top">
+          <div>
+            <h2 id="matchDayTitle">ผลบอลวันนี้</h2>
+            <p id="matchSummary">กำลังจัดรายการแข่งขัน</p>
+          </div>
+          <div class="view-toggle" aria-label="มุมมอง">
+            <span>มุมมอง</span>
+            <button class="toggle-button active" data-view="time" type="button">◷ เวลา</button>
+            <button class="toggle-button" data-view="league" type="button">▤ ลีก</button>
+          </div>
+        </div>
+
+        <div class="quick-tabs" aria-label="ประเภทข้อมูล">
+          <button class="quick-tab active" data-status="all" type="button">ทั้งหมด</button>
+          <button class="quick-tab" data-status="scheduled" type="button">โปรแกรม</button>
+          <button class="quick-tab" data-status="live" type="button">กำลังแข่ง</button>
+          <button class="quick-tab" data-status="finished" type="button">ผลบอล</button>
+        </div>
+
+        <div class="toolbar" aria-label="ตัวกรอง">
+          <label class="search-box">
+            <span>ค้นหา</span>
+            <input id="searchInput" type="search" placeholder="ทีม หรือลีก" autocomplete="off" />
+          </label>
+          <div class="status-filters" aria-label="สถานะแมตช์">
+            <button class="filter-button active" data-status="all" type="button">ทั้งหมด</button>
+            <button class="filter-button" data-status="scheduled" type="button">ยังไม่เริ่ม</button>
+            <button class="filter-button" data-status="live" type="button">กำลังแข่ง</button>
+            <button class="filter-button" data-status="finished" type="button">จบแล้ว</button>
+          </div>
+          <button id="refreshButton" class="refresh-button" type="button">↻ รีเฟรช</button>
+        </div>
+
+        <div id="featuredLeagues" class="featured-leagues" aria-label="ลีกยอดนิยม"></div>
+
+        <div id="notice" class="notice" hidden></div>
+        <div id="matches" class="match-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <div id="detailDialog" class="dialog-backdrop" hidden>
+      <article class="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+        <button id="closeDetail" class="icon-button" type="button" aria-label="ปิดรายละเอียด">×</button>
+        <p id="detailCompetition" class="detail-kicker"></p>
+        <h2 id="detailTitle"></h2>
+        <dl id="detailMeta" class="detail-meta"></dl>
+      </article>
+    </div>
+
+    <script src="/config.js"></script>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
